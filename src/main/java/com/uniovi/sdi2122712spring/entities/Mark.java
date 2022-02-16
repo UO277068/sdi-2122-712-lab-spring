@@ -2,11 +2,31 @@ package com.uniovi.sdi2122712spring.entities;
 
 public class Mark {
 
-    private long id;
+    private Long id;
     private String description;
-    private double score;
+    private Double score;
 
-    public long getId() {
+    //Constructores
+     public Mark(){
+
+     }
+    public Mark(Long i, String d, Double s){
+         this.id=i;
+         this.description=d;
+         this.score=s;
+     }
+    //
+
+    @Override
+    public String toString() {
+        return "Mark{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", score=" + score +
+                '}';
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -22,7 +42,7 @@ public class Mark {
         this.description = description;
     }
 
-    public double getScore() {
+    public Double getScore() {
         return score;
     }
 
