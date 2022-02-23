@@ -11,14 +11,26 @@ public class Mark {
     private String description;
     private Double score;
 
+    @ManyToOne
+    @JoinColumn(name= "user_id") //Recordar¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡
+    private User user;
+
     //Constructores
      public Mark(){
 
      }
+
     public Mark(Long i, String d, Double s){
          this.id=i;
          this.description=d;
          this.score=s;
+     }
+
+     public Mark(String description , Double score, User user){
+         super();
+         this.description=description;
+         this.user=user;
+         this.score=score;
      }
     //
 
@@ -37,6 +49,15 @@ public class Mark {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescription() {
