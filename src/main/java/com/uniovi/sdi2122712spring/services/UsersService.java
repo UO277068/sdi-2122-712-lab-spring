@@ -16,6 +16,8 @@ public class UsersService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    private String  passwordEncript;
+
     @PostConstruct
     public void init() {
     }
@@ -29,8 +31,15 @@ public class UsersService {
     }
 
     public void addUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword( bCryptPasswordEncoder.encode(user.getPassword()));
+        passwordEncript=user.getPassword();
         usersRepository.save(user);
+    }
+
+    public void updateUser(User user)
+    {
+        user.setPassword(passwordEncript);
+       usersRepository.save(user);
     }
     public void deleteUser(Long id) {
         usersRepository.deleteById(id);

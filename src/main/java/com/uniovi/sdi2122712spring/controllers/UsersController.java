@@ -30,6 +30,12 @@ public class UsersController {
         model.addAttribute("usersList", usersService.getUsers());
         return "user/list";
     }
+    @RequestMapping("/user/list/update")
+    public String updateList(Model model){
+        model.addAttribute("markList", usersService.getUsers() );
+        return "user/list :: tableUsers";
+    }
+
     @RequestMapping(value = "/user/add")
     public String getUser(Model model) {
         model.addAttribute("usersList", usersService.getUsers());
@@ -58,12 +64,12 @@ public class UsersController {
     }
     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
     public String setEdit(Model model, @PathVariable Long id, @ModelAttribute User user) {
-        usersService.addUser(user);
+        usersService.updateUser(user);
         return "redirect:/user/details/" + id;
     }
     //Sesion 3
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signup(@Validated User user, BindingResult result) {
+    public String signup(@Validated User user, BindingResult result) {  //Validador
         signUpFormValidator.validate(user,result);
         if(result.hasErrors()){
             return "signup";
