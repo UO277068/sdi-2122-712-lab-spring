@@ -54,7 +54,7 @@ public class MarksController {
     }
 
     @RequestMapping("/mark/list")
-    public String getList(Model model, Principal principal){
+    public String getList(Model model, Principal principal, @RequestParam(value="",required = false) String searchText){
 //        Set<Mark> consultedList= (Set<Mark>) httpSession.getAttribute("consultedList");
 //        if ( consultedList == null ) {
 //            consultedList = new HashSet<Mark>();
@@ -63,7 +63,11 @@ public class MarksController {
 
         String dni = principal.getName(); // DNI es el name de la autenticación
         User user = usersService.getUserByDni(dni);
-        model.addAttribute("markList", marksService.getMarksForUser(user));
+        if(searchText!=null && !searchText.isEmpty()){
+            model.addAttribute("marklist",marksService.searchMarksByDescriptionAndNameForUser(searchText,user));
+        }else{
+            model.addAttribute("marklist",marksService.getMarksForUser(user));
+        }
         return "/mark/list";
     }
 
