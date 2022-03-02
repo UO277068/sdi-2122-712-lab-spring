@@ -1,6 +1,7 @@
 package com.uniovi.sdi2122712spring.controllers;
 
 import com.uniovi.sdi2122712spring.entities.User;
+import com.uniovi.sdi2122712spring.services.RolesService;
 import com.uniovi.sdi2122712spring.services.SecurityService;
 import com.uniovi.sdi2122712spring.services.UsersService;
 import com.uniovi.sdi2122712spring.validators.SignUpFormValidator;
@@ -25,6 +26,9 @@ public class UsersController {
     @Autowired
     private SignUpFormValidator signUpFormValidator;
 
+    @Autowired
+    private RolesService rolesService;
+
     @RequestMapping("/user/list")
     public String getListado(Model model) {
         model.addAttribute("usersList", usersService.getUsers());
@@ -38,6 +42,7 @@ public class UsersController {
 
     @RequestMapping(value = "/user/add")
     public String getUser(Model model) {
+        model.addAttribute("rolesList", rolesService.getRoles());
         model.addAttribute("usersList", usersService.getUsers());
         return "user/add";
     }
@@ -74,6 +79,7 @@ public class UsersController {
         if(result.hasErrors()){
             return "signup";
         }
+        user.setRole(rolesService.getRoles()[0]); //Se le asigna el roll de estudiante automaticamente
         usersService.addUser(user);
         securityService.autoLogin(user.getDni(),user.getPasswordConfirm());
         return "redirect:home";
