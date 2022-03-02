@@ -1,6 +1,7 @@
 package com.uniovi.sdi2122712spring.services;
 
 import com.uniovi.sdi2122712spring.entities.Mark;
+import com.uniovi.sdi2122712spring.entities.User;
 import com.uniovi.sdi2122712spring.repositories.MarksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -55,9 +56,17 @@ public void setMarkResend(boolean revised, Long id) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     String dni = auth.getName();
     Mark mark = marksRepository.findById(id).get();
-    if(mark.getUser().getDni().equals(dni) ) {
+    if (mark.getUser().getDni().equals(dni)) {
         marksRepository.updateResend(revised, id);
     }
+}
+public List<Mark> getMarksForUser(User user) {
+        List<Mark> marks = new ArrayList<Mark>();
+        if (user.getRole().equals("ROLE_STUDENT")) {
+            marks = marksRepository.findAllByUser(user);}
+        if (user.getRole().equals("ROLE_PROFESSOR")) {
+            marks = getMarks(); }
+        return marks;
     }
 
 }
