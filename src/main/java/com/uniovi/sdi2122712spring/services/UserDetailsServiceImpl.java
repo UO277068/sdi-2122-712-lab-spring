@@ -12,9 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Service("userDetailsService")
 public class UserDetailsServiceImpl  implements UserDetailsService {
     @Autowired

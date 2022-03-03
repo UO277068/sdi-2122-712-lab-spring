@@ -5,7 +5,6 @@ import com.uniovi.sdi2122712spring.repositories.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.LinkedList;
 import java.util.List;
 

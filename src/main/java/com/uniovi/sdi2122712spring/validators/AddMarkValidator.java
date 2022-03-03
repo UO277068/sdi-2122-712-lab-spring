@@ -3,7 +3,6 @@ package com.uniovi.sdi2122712spring.validators;
 import com.uniovi.sdi2122712spring.entities.Mark;
 import com.uniovi.sdi2122712spring.entities.User;
 import com.uniovi.sdi2122712spring.services.MarksService;
-import com.uniovi.sdi2122712spring.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

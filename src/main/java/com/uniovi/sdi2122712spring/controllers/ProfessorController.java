@@ -1,6 +1,5 @@
 package com.uniovi.sdi2122712spring.controllers;
 
-import com.uniovi.sdi2122712spring.entities.Mark;
 import com.uniovi.sdi2122712spring.entities.Professor;
 import com.uniovi.sdi2122712spring.services.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;

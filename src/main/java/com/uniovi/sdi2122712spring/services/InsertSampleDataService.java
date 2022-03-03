@@ -56,7 +56,6 @@ public class InsertSampleDataService {
         user2.setMarks(user2Marks);
         Set user3Marks = new HashSet<Mark>() {
             {
-                ;
                 add(new Mark("Nota C1", 5.5, user3));
                 add(new Mark("Nota C2", 6.6, user3));
                 add(new Mark("Nota C3", 7.0, user3));
@@ -78,6 +77,6 @@ public class InsertSampleDataService {
         usersService.addUser(user4);
         usersService.addUser(user5);
         usersService.addUser(user6);
-    };
+    }
 }
 
