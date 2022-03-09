@@ -5,37 +5,45 @@ import javax.persistence.Id;
 
 @Entity
 public class Professor {
-    private String nombre;
-    private String categoria;
+    private String name;
+    private String surname;
+    private String category;
     @Id
     private String dni;
-    private String apellidos;
 
     public Professor() {
 
     }
 
     public Professor(String dni,String nombre,String apellidos,String categoria){
-        this.nombre=nombre;
-        this.categoria=categoria;
-        this.apellidos=apellidos;
+        this.name=nombre;
+        this.category=categoria;
+        this.surname=apellidos;
         this.dni=dni;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDni() {
@@ -46,21 +54,13 @@ public class Professor {
         this.dni = dni;
     }
 
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
     @Override
     public String toString() {
         return "Professor{" +
-                "nombre='" + nombre + '\'' +
-                ", categoria='" + categoria + '\'' +
+                "nombre='" + name + '\'' +
+                ", categoria='" + category + '\'' +
                 ", dni='" + dni + '\'' +
-                ", apellidos='" + apellidos + '\'' +
+                ", apellidos='" + surname + '\'' +
                 '}';
     }
 }
