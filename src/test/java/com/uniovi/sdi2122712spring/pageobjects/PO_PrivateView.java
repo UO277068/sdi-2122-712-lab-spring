@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+
 public class PO_PrivateView extends PO_NavView {
     static public void fillFormAddMark(WebDriver driver, int userOrder, String descriptionp, String scorep)
     {
@@ -22,6 +25,11 @@ public class PO_PrivateView extends PO_NavView {
         score.sendKeys(scorep);
         By boton = By.className("btn");
         driver.findElement(boton).click();
+    }
+
+    static public void checkViewAndClick(WebDriver driver,String type,String text,int index){
+        List<WebElement> elements = checkElementBy(driver, type, text);
+        elements.get(index).click();
     }
 }
 
